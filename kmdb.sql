@@ -148,6 +148,7 @@ CREATE TABLE movies (
   year_released INTEGER,
   MPAA_rating text,
   studio_id INTEGER
+  --FOREIGN KEY (studio_id) REFERENCES studios(id)
 );
 
 CREATE TABLE characters (
@@ -164,12 +165,12 @@ insert into actors (name)
 values ("Christian Bale"), ("Michael Caine"), ("Liam Neeson"), ("Katie Holmes"), ("Gary Oldman"), ("Heath Ledger"), ("Aaron Eckhart"), ("Maggie Gylenhaal"), ("Tom Hardy"), ("Joseph Gordon-Levitt"), ("Anne Hathaway")
 ;
 
-insert into movies (title, year_released, MPAA_rating)
-values ("Batman Begins", "2005", "PG-13"), ("The Dark Knight", "2008", "PG-13"), ("The Dark Knight Rises", "2012", "PG-13")
+insert into movies (title, year_released, MPAA_rating, studio_id)
+values ("Batman Begins", 2005, "PG-13", 1), ("The Dark Knight", 2008, "PG-13",1), ("The Dark Knight Rises", 2012, "PG-13",1)
 ;
 
-insert into characters (name)
-values ("Bruce Wayne"), ("Alfred"), ("Ra's Al Ghul"), ("Rachel Dawes"), ("Commissioner Gordon"), ("Joker"), ("Harvey Dent"), ("Bane"), ("John Blake"), ("Selina Kyle")
+insert into characters (name, movie_id, actor_id,)
+values ("Bruce Wayne",1,1), ("Alfred",2,2), ("Ra's Al Ghul",1,1), ("Rachel Dawes",1,1), ("Commissioner Gordon",1,1), ("Joker",2,2), ("Harvey Dent",2,3), ("Bane",2,3), ("John Blake",2,3), ("Selina Kyle",2,3)
 ;
 
 .print "Movies"
@@ -177,7 +178,7 @@ values ("Bruce Wayne"), ("Alfred"), ("Ra's Al Ghul"), ("Rachel Dawes"), ("Commis
 .print ""
 
 select movies.title, movies.year_released, movies.MPAA_rating, studios.name
-from studios inner join movies on studios.id = movies.studio_id;
+from movies inner join studios on movies.studio_id = studios.id;
 
 .print ""
 .print "Top Cast"
