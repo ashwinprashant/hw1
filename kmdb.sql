@@ -191,5 +191,6 @@ inner join actors on actors.id = characters.actor_id
 inner join movies on movies.id = characters.movie_id
 order by movies.title;
 
+.width 50 30 30
 .mode column
 .headers off
