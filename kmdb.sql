@@ -184,6 +184,7 @@ from movies inner join studios on movies.studio_id = studios.id;
 .print "Top Cast"
 .print "========"
 .print ""
+.width 50 30 30
 
 select movies.title, actors.name, characters.name
 from characters
